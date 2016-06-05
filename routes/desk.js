@@ -11,11 +11,13 @@ exports.login = function(req, res){
         if(err){
             console.log("DB CONNECTION ERROR");
             conn.release();
+            res.json({result:-3, contents:"DB CONNECTION ERROR"});
         }else{
             conn.query("SELECT t_ifon FROM t_table WHERE t_num = ?", [tableNum], function(err, rows){
                if(err){
                    console.log("SELECT t_ifon ERROR");
                    conn.release();
+                   res.json({result:-1});
                }else{
                    var check = rows[0].t_ifon;
                    if(check == 0){
@@ -27,9 +29,9 @@ exports.login = function(req, res){
                                 conn.query("UPDATE student SET stu_iflogin = true WHERE stu_id = ?", [stuId], function(err, rows){
                                     conn.query("UPDATE t_table SET t_ifon = true, t_stunum = ? WHERE t_num = ?", [stuNum, tableNum], function(err, rows){
                                         var dt = new Date();
-                                        var dateNow = dt.toFormat("YYYY-MM-DD HH24:MI:SS");
+                                        var dateNow = dt.toFormat("HH24MISS");
                                         conn.release();
-                                        res.json({result:1, stu_id:stuId, t_num:tableNum, time:dateNow});
+                                        res.json({result:1, stu_id:stuId, stu_life:stuLife, time:dateNow});
                                     });
                                 });
                             }else{
