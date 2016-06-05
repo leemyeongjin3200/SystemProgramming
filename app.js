@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var login = require('./routes/desk');
+var functions = require('./routes/desk');
 var app = express();
 var schedule = require('./lib/scheduler.js');
 
@@ -24,7 +24,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.get('/login', login.login);
+app.get('/login', functions.login);
+app.get('/logout', functions.logout)
+app.get('/checklife', functions.getLife);
+app.get('/report', functions.report);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
