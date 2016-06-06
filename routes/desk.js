@@ -31,7 +31,7 @@ exports.login = function(req, res){
                                         var dt = new Date();
                                         var dateNow = dt.toFormat("HH24MISS");
                                         conn.release();
-                                        res.json({result:1, stu_id:parseInt(stuId), stu_life:stuLife, time:parseInt(dateNow)});
+                                        res.json({result:1, stuid:parseInt(stuId), stulife:stuLife, time:parseInt(dateNow)});
                                     });
                                 });
                             }else{
