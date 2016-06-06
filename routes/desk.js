@@ -24,12 +24,12 @@ exports.login = function(req, res){
                        console.log("사용가능");
                         conn.query("SELECT num, stu_life FROM student WHERE stu_id = ?", [stuId], function(err, rows){
                             var stuNum = rows[0].num;
-                            var stuLife = rows[0].stu_life;
+                            var stuLife = parseInt(rows[0].stu_life);
                             if(stuLife > 0){
                                 conn.query("UPDATE student SET stu_iflogin = true WHERE stu_id = ?", [stuId], function(err, rows){
                                     conn.query("UPDATE t_table SET t_ifon = true, t_stunum = ? WHERE t_num = ?", [stuNum, tableNum], function(err, rows){
                                         var dt = new Date();
-                                        var dateNow = dt.toFormat("HH24MISS");
+                                        var dateNow = parseInt(dt.toFormat("HH24MISS"));
                                         conn.release();
                                         res.json({result:1, stu_id:stuId, stu_life:stuLife, time:dateNow});
                                     });
