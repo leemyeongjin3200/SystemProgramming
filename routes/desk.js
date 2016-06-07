@@ -38,13 +38,13 @@ exports.login = function(req, res){
                             }else{
                                 console.log("경고누적으로 이용불가");
                                 conn.release();
-                                res.json({result:-2});
+                                res.send({result:-2});
                             }
                         })
                    }else{
                        console.log("이미사용중");
                        conn.release();
-                       res.json({result:-1});
+                       res.send({result:-1});
                    }
                }
             });
@@ -64,7 +64,7 @@ exports.logout = function(req, res){
             conn.query("UPDATE student SET stu_iflogin = false WHERE stu_id = ?", [stuId], function(err, results){
                 conn.query("UPDATE t_table SET t_ifon = false, t_stunum = null WHERE t_num = ?", [tableNum], function(err, results){
                     conn.release();
-                    res.json({result : 1});
+                    res.send({result : 1});
                 });
             });
         }
@@ -81,7 +81,7 @@ exports.getLife = function(req, res){
         }else{
             conn.query("SELECT stu_life FROM student WHERE stu_id = ?", [stuId], function(err, rows){
                 conn.release();
-                res.json({result:1, stuLife : rows[0].stu_life});
+                res.send({result:1, stuLife : rows[0].stu_life});
             })
         }
     })
@@ -98,13 +98,13 @@ exports.report = function(req, res){
             conn.query("SELECT * FROM student a INNER JOIN t_table b ON a.num = b.t_stunum WHERE b.t_num = ?", [targetTable], function(err, rows){
                 if(rows[0] == null){
                     conn.release();
-                    res.json({result:-1});
+                    res.send({result:-1});
                 }else{
                     var stuLife = rows[0].stu_life - 1;
                     var stuId = rows[0].stu_id;
                     conn.query("UPDATE student SET stu_life=? WHERE stu_id = ?", [stuLife, stuId], function(err, results){
                         conn.release();
-                        res.json({result:1});
+                        res.send({result:1});
                     })
                 }
 
