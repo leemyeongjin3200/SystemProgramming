@@ -28,6 +28,8 @@ app.get('/login', functions.login);
 app.get('/logout', functions.logout)
 app.get('/checklife', functions.getLife);
 app.get('/report', functions.report);
+app.post('/uploadImage', functions.uploadImage);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

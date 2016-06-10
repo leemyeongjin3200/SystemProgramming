@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var pool = require('../lib/mysql.js').pool;
+var multiparty = require('multiparty');
+
 require('date-utils');
 
 exports.login = function(req, res){
@@ -111,4 +113,8 @@ exports.report = function(req, res){
             });
         }
     });
+}
+
+exports.uploadImage = function(req, res){
+
 }
