@@ -116,5 +116,43 @@ exports.report = function(req, res){
 }
 
 exports.uploadImage = function(req, res){
+    console.log(req);
+    /*var form = new multiparty.Form();
 
+    form.on('part',function(part){
+        var filename;
+        var size;
+        if (part.filename) {
+            filename = part.filename;
+            size = part.byteCount;
+        }else{
+            part.resume();
+        }
+
+        console.log("Write Streaming file :"+filename);
+        var writeStream = fs.createWriteStream('/tmp/'+filename);
+        writeStream.filename = filename;
+        part.pipe(writeStream);
+
+        part.on('data',function(chunk){
+            console.log(filename+' read '+chunk.length + 'bytes');
+        });
+
+        part.on('end',function(){
+            console.log(filename+' Part read complete');
+            writeStream.end();
+        });
+    });
+
+    // all uploads are completed
+    form.on('close',function(){
+        res.send({'result':1});
+    });
+
+    // track progress
+    form.on('progress',function(byteRead,byteExpected){
+        console.log(' Reading total  '+byteRead+'/'+byteExpected);
+    });
+
+    form.parse(req);*/
 }
