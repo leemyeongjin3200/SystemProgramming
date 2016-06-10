@@ -26,6 +26,7 @@ exports.login = function(req, res){
                        console.log("사용가능");
                         conn.query("SELECT num, stu_life FROM student WHERE stu_id = ?", [stuId], function(err, rows){
                             if(rows.length == 0){
+                                conn.release();
                                 res.send({'result': -1});
                             }else{
                                 var stuNum = rows[0].num;
@@ -88,8 +89,14 @@ exports.getLife = function(req, res){
             conn.release();
         }else{
             conn.query("SELECT stu_life FROM student WHERE stu_id = ?", [stuId], function(err, rows){
-                conn.release();
-                res.send({result:1, stuLife : rows[0].stu_life});
+                if(rows.length == 0){
+                    conn.release();
+                    res.send({result:-1});
+                }else{
+                    conn.release();
+                    res.send({result:1, stuLife : rows[0].stu_life});
+                }
+
             })
         }
     })
@@ -104,7 +111,7 @@ exports.report = function(req, res){
             conn.release();
         }else{
             conn.query("SELECT * FROM student a INNER JOIN t_table b ON a.num = b.t_stunum WHERE b.t_num = ?", [targetTable], function(err, rows){
-                if(rows[0] == null){
+                if(rows.length == 0){
                     conn.release();
                     res.send({result:-1});
                 }else{
