@@ -71,10 +71,15 @@ exports.logout = function(req, res){
             conn.release();
         }else{
             conn.query("UPDATE student SET stu_iflogin = false WHERE stu_id = ?", [stuId], function(err, results){
-                conn.query("UPDATE t_table SET t_ifon = false, t_stunum = null WHERE t_num = ?", [tableNum], function(err, results){
-                    conn.release();
-                    res.send({result : 1});
-                });
+                console.log(results.changedRows);
+                if(results.changedRows == 0){
+                    res.send({result : -1});
+                }else{
+                    conn.query("UPDATE t_table SET t_ifon = false, t_stunum = null WHERE t_num = ?", [tableNum], function(err, results){
+                        conn.release();
+                        res.send({result : 1});
+                    });
+                }
             });
         }
     });
