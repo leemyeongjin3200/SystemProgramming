@@ -1,7 +1,8 @@
 ﻿window.onload = function () {
     var popupUrl = "https://www.pushpots.com/login"
     var popupOptions = "width=370, height=360, resizable=no, scrollbars=no"
-    window.open(popupUrl, "_blank",  popupOptions);
+    window.open(popupUrl, "_blank", popupOptions);
+    window.focus();
 }
 
 var pushpotsSDK = (function () {
