@@ -1,12 +1,12 @@
 ﻿var pushpots = pushpots || (function () {
-    var user_key = "";
+    var user_key = {};
 
     return {
-        init: function (key) {
-            user_key = key;
+        init: function (args) {
+            user_key = args[0];
         },
-        print: function () {
-            alert(user_key);
+        get_key: function () {
+            return user_key;
         }
     }
 }());
