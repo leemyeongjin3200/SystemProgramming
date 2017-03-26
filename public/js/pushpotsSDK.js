@@ -1,17 +1,16 @@
-﻿(function (window) {
-    var pushpots = pushpots || (function () {
-        var user_key = "";
+﻿var pushpots = pushpots || (function () {
+    var user_key = "";
 
-        return {
-            init: function (key) {
-                user_key = key;
-            },
-            print: function () {
-                alert(user_key);
-            }
+    return {
+        init: function (key) {
+            user_key = key;
+        },
+        print: function () {
+            alert(user_key);
         }
-    })
-})
+    }
+}());
+
 
 /*
 window.onload = function () {
