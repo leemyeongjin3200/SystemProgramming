@@ -1,9 +1,27 @@
-﻿window.onload = function () {
+﻿(function (window) {
+    var pushpots = (function () {
+        var user_key = "";
+
+        return {
+            init: function (key) {
+                user_key = key;
+            },
+            print: function () {
+                alert(user_key);
+            }
+        }
+    })
+})
+
+/*
+window.onload = function () {
     var popupUrl = "https://www.pushpots.com/login"
     var popupOptions = "width=550, height=750, scrollbars=no"
     window.open(popupUrl, "_blank", popupOptions);
     window.focus();
 }
+*/
+
 
 var pushpotsSDK = (function () {
     // 인증
