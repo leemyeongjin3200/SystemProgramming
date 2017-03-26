@@ -1,5 +1,5 @@
 ﻿(function (window) {
-    var pushpots = (function () {
+    var pushpots = pushpots || (function () {
         var user_key = "";
 
         return {
