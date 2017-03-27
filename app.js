@@ -29,7 +29,11 @@ app.get('/logout', functions.logout)
 app.get('/checklife', functions.getLife);
 app.get('/report', functions.report);
 app.post('/uploadImage', functions.uploadImage);
-
+// ************************************************************************************
+// PUSHPOTSDK 
+// ************************************************************************************    
+app.get('/pushpotsdk_test', pushpotsSDK.testPage);
+app.post('/pushpotsdk_auth', pushpotsSDK.authDomain);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
