@@ -9,7 +9,7 @@ var users = require('./routes/users');
 var functions = require('./routes/desk');
 var app = express();
 var schedule = require('./lib/scheduler.js');
-
+var pushpotsSDK = require('./routes/pushpotsSDK_test.js');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
