@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var functions = require('./routes/desk');
 var app = express();
 var pushpotsSDK = require('./routes/pushpotsSDK_test.js');
 // view engine setup
@@ -23,11 +22,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.get('/login', functions.login);
-app.get('/logout', functions.logout)
-app.get('/checklife', functions.getLife);
-app.get('/report', functions.report);
-app.post('/uploadImage', functions.uploadImage);
 // ************************************************************************************
 // PUSHPOTSDK 
 // ************************************************************************************    
