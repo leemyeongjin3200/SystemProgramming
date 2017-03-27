@@ -12,6 +12,7 @@
     "debug": "^2.2.0",
     "ejs": "~2.3.3",
     "express": "~4.13.1",
+    "generic-pool": "^3.1.7",
     "morgan": "~1.6.1",
     "multiparty": "^4.1.2",
     "mysql": "^2.10.2",
