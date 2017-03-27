@@ -11,7 +11,7 @@
             $.ajax({
                 url : "pushpotsdk_auth",
                 type : 'POST',
-                dataType : 'jsonp',
+                dataType : 'json',
                 data : {
                     user_key : user_key,
                     domain : user_domain
