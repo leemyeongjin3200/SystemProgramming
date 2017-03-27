@@ -16,7 +16,7 @@ exports.authDomain = function (req, res){
             _DBPool.release(db);
             res.end("Connection err : " + err);
         } else {
-            db.query("CALL GET_DOMAIN_AUTH(?, ?)", [userKey, domain], function (err, result) {
+            db.query("CALL GET_DOMAIN_AUTH(?,?)", [userKey, domain], function (err, result) {
                 if (err) {
                     _DBPool.release(db);
                     console.log(err);
