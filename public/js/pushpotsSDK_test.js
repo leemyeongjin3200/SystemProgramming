@@ -15,7 +15,7 @@
                 jsonp: 'callback',
                 data: 'user_key=' + user_key + "&domain=" + user_domain,
                 beforeSend: function (xhr) {
-                    xhr.setRequestHeader("Referer", document.URL);
+                    xhr.setRequestHeader("Referer", user_domain);
                 },
                 success: function (result) {
                     if (JSON.stringify(result.result) == "1") {
