@@ -14,6 +14,9 @@
                 dataType: 'jsonp',
                 jsonp: 'callback',
                 data: 'user_key=' + user_key + "&domain=" + user_domain,
+                beforeSend: function (request) {
+                    request.setRequestHeader("referer", window.location.href);
+                },
                 success: function (result) {
                     if (JSON.stringify(result.result) == "1") {
                         var isChrome = !!navigator.userAgent.match('Chrome');
