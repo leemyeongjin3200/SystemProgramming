@@ -35,13 +35,15 @@
     // Opera
                         else if ((isOpera) && (isMobile) && (isAndroid)) { // Oepra android mobile 만 우선 지원(windows , macOS 추후 지원)
                             
-                            var popupUrl = "https://www.pushpots.com/slogin"
+                            //var popupUrl = "https://www.pushpots.com/slogin"
+                            var popupUrl = "http://127.0.0.1/login"
                             var popupOptions = "width=550, height=750, scrollbars=no"
                             window.open(popupUrl, "_blank", popupOptions);
                             window.focus();
                         } else if (isFirefox) {// Firefox 모두 지원 PC 및 Android Mobile
                             
-                            var popupUrl = "https://www.pushpots.com/slogin"
+                            //var popupUrl = "https://www.pushpots.com/slogin"
+                            var popupUrl = "http://127.0.0.1/login"
                             var popupOptions = "width=550, height=750, scrollbars=no"
                             window.open(popupUrl, "_blank", popupOptions);
                             window.focus();
@@ -53,7 +55,8 @@
                             
                             if (verChrome > 50) {
                                 
-                                var popupUrl = "https://www.pushpots.com/slogin"
+                                //var popupUrl = "https://www.pushpots.com/slogin"
+                                var popupUrl = "http://127.0.0.1/login"
                                 var popupOptions = "width=550, height=750, scrollbars=no"
                                 window.open(popupUrl, "_blank", popupOptions);
                                 window.focus();
