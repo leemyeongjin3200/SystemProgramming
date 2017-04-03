@@ -10,13 +10,11 @@
             
             $.ajax({
                 url : "https://www.pushpots.com/pushpotsdk_auth",
-                type : 'POST',
-                dataType : 'json',
-                data : {
-                    user_key : user_key,
-                    domain : user_domain
-                },
-                success : function (result) {
+                type: 'GET',
+                dataType: 'jsonp',
+                jsonp: 'callback',
+                data: 'user_key=' + user_key + "&domain=" + user_domain,
+                success: function (result) {
                     if (JSON.stringify(result.result) == "1") {
                         var isChrome = !!navigator.userAgent.match('Chrome');
                         var isEdge = !!navigator.userAgent.match('Edge');
@@ -32,16 +30,18 @@
                             alert("아이폰 및 아이패드에서는 웹푸시 지원이 되지 않습니다. 전용 앱을 설치하십시요");
                             return;
                         }
-    // Opera
+                            // Opera
                         else if ((isOpera) && (isMobile) && (isAndroid)) { // Oepra android mobile 만 우선 지원(windows , macOS 추후 지원)
-                            
-                            var popupUrl = "https://www.pushpots.com/slogin"
+
+                            //var popupUrl = "https://www.pushpots.com/slogin"
+                            var popupUrl = "http://127.0.0.1/login"
                             var popupOptions = "width=550, height=750, scrollbars=no"
                             window.open(popupUrl, "_blank", popupOptions);
                             window.focus();
                         } else if (isFirefox) {// Firefox 모두 지원 PC 및 Android Mobile
-                            
-                            var popupUrl = "https://www.pushpots.com/slogin"
+
+                            //var popupUrl = "https://www.pushpots.com/slogin"
+                            var popupUrl = "http://127.0.0.1/login"
                             var popupOptions = "width=550, height=750, scrollbars=no"
                             window.open(popupUrl, "_blank", popupOptions);
                             window.focus();
@@ -50,10 +50,11 @@
                         else if ((((isChrome) && (!isiPhone)) || ((isChrome) && (!isiPad))) && (!isEdge)) { // Chrome Windows, Linux, mac OS X , Android Mobile지원
                             var raw = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
                             var verChrome = parseInt(raw[2], 10);
-                            
+
                             if (verChrome > 50) {
-                                
-                                var popupUrl = "https://www.pushpots.com/slogin"
+
+                                //var popupUrl = "https://www.pushpots.com/slogin"
+                                var popupUrl = "http://127.0.0.1/login"
                                 var popupOptions = "width=550, height=750, scrollbars=no"
                                 window.open(popupUrl, "_blank", popupOptions);
                                 window.focus();
@@ -69,7 +70,7 @@
                         alert("[" + JSON.stringify(result.message) + "] 관리자에게 문의바랍니다.");
                     }
                 },
-                error : function (err) {
+                error: function (err) {
                     alert(JSON.stringify(err));
                 }
             });
