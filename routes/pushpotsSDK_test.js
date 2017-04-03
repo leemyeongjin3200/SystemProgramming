@@ -8,7 +8,7 @@ exports.testPage = function (req, res){
 }
 
 exports.authDomain = function (req, res){
-    var userKey = req.body.user_key;
+    var cp_key = req.body.cp_key;
     var domain = req.body.domain;
     
     _DBPool.acquire(function (err, db) {
@@ -16,7 +16,7 @@ exports.authDomain = function (req, res){
             _DBPool.release(db);
             res.end("Connection err : " + err);
         } else {
-            db.query("CALL GET_DOMAIN_AUTH(?,?)", [userKey, domain], function (err, result) {
+            db.query("CALL GET_DOMAIN_AUTH(?,?)", [cpKey, domain], function (err, result) {
                 if (err) {
                     _DBPool.release(db);
                     console.log(err);

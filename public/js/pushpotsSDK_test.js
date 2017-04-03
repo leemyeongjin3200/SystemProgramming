@@ -1,11 +1,11 @@
 ﻿var pushpots = pushpots || (function () {
-    var user_key;
+    var cp_key;
     var user_domain;
     var domain_key;
 
     return {
         init: function (args) {
-            user_key = args[0];
+            cp_key = args[0];
             user_domain = document.location.host;
             
             $.ajax({
@@ -13,7 +13,7 @@
                 type: 'GET',
                 dataType: 'jsonp',
                 jsonp: 'callback',
-                data: 'user_key=' + user_key + "&domain=" + user_domain,
+                data: 'cp_key=' + cp_key + "&domain=" + user_domain,
                 success: function (result) {
                     if (JSON.stringify(result.result) == "1") {
                         var isChrome = !!navigator.userAgent.match('Chrome');
@@ -81,12 +81,6 @@
                 }
             });
              **/
-        },
-        get_key: function () {
-            return user_key;
-        },
-        requestPermission: function (){
-            
         }
     }
 }());
