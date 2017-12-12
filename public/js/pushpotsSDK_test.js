@@ -7,7 +7,7 @@
         init: function (args) {
             cp_key = args[0];
             user_domain = document.location.host;
-            
+            console.log(user_domain);
             $.ajax({
                 url : "https://www.pushpots.com/pushpotsdk_auth",
                 type: 'GET',
